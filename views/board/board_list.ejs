@@ -1,0 +1,32 @@
+<% include ../header %>
+    <header>
+        <link rel="stylesheet" href="/stylesheets/board.css">
+    </header>
+    <div class="board_list">
+        <div class="well-white">
+            <legend>
+                Your boards
+                <a href="{{pathFor 'board_new'}}" class="btn btn-primary pull-right">New Bord</a>
+            </legend>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Created By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each boards}}
+                    <tr>
+                        <td><a href="{{pathFor 'board'}}">{{name}}</a></td>
+                        <td>{{{typeBoardLabel type}}}</td>
+                        <td>{{userName}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <% include ../footer %>

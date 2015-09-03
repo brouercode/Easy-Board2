@@ -1,0 +1,16 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Ubuntu', Tahoma, Calibri, Arial;
+    background: url('../images/bg.jpg');
+    height: 100%;
+    color: #212121;
+    margin-bottom: 0px;
+}
+
+#wrap {
+    padding: 60px 15px 0;
+}

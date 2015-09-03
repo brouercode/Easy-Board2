@@ -1,0 +1,315 @@
+.well-white {
+    min-height: 20px;
+    padding: 12px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.well-white legend {
+    padding-bottom: 3px;
+}
+
+.well-white legend .btn {
+    /* color: #ffffff; */
+    background-color: #4D99DA;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.well-white .controlbar {
+    padding-top: 5px;
+    margin-bottom: 24px;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 11px;
+}
+
+.well-white .controlbar .btn {
+    background-color: #4D99DA;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+
+.board .view-title {
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.board .view-title .navbar {
+    min-height: 1px;
+    margin-bottom: auto;
+}
+
+.board .view-title .navbar .navbar-collapse {
+    padding-right: 5px;
+}
+
+.board .view-title .dropdown-toggle {
+    cursor: pointer;
+}
+
+.board .view-title .dropdown-menu > li > a {
+    padding: 3px 10px;
+    display: initial;
+    cursor: pointer;
+}
+
+.board .view-title .dropdown-menu > li > .glyphicon.disabled {
+    color: #C1C1C1;
+}
+
+.board .view-title .dropdown-menu > li > .icon-add-story {
+    color: #4C91D2;
+    padding-left: 10px;
+    vertical-align: middle;
+    top: 0px;
+}
+
+.board .view-title .dropdown-menu > li > .icon-share {
+    color: #4C91D2;
+    padding-left: 10px;
+    vertical-align: middle;
+    top: 0px;
+}
+
+.board .view-title .dropdown-menu > li > .icon-delete {
+    color: #D24C4C;
+    padding-left: 10px;
+    vertical-align: middle;
+    top: 0px;
+}
+
+.board .view-title .dropdown-menu > li > .icon-close {
+    color: #4C91D2;
+    padding-left: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+    top: 0px;
+}
+
+.board .view-title .navbar .title-board-name {
+    height: 32px;
+    margin-top: 4px;
+}
+
+.board .header-vertical {
+    display: none;
+}
+
+.board .header-vertical th {
+    width: 20%
+}
+
+.board .header-vertical .header-story {
+    position: relative;
+}
+
+.board .header-vertical .header-story .btn-new-story {
+    padding: 0;
+    color: #337AB4;
+    border-style: none;
+    font-weight: bold;
+    position: absolute;
+    font-size: 10px;
+    bottom: 2px;
+    right: 5px;
+}
+
+.board .board-column,
+.board .story-column {
+    height: 1px;
+    padding: 0 !important;
+}
+
+.board .story-column {
+    width: 20%;
+}
+
+.board .story-column .story-container {
+    height: 100%;
+    padding: 5px 5px 0 5px;
+}
+
+.board .story-column .story-container .story-name {
+    text-align: center;
+    background-color: #ADADAD;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    border: 1px solid #989898;
+    height: 100%;
+    padding: 16px 5px 5px 5px;
+}
+
+.board .story-column .story-container .story-name > .btn {
+    padding: 0;
+    font-size: 12px;
+    color: #337AB4;
+    border-style: none;
+    font-weight: bold;
+    position: absolute;
+}
+
+.board .story-column .story-container .story-name .btn-new-task {
+    font-size: 10px;
+    top: 3px;
+    left: 5px;
+}
+
+.board .story-column .story-container .story-name .btn-edit-story {
+    top: 2px;
+    right: 19px;
+    font-weight: initial;
+}
+
+.board .story-column .story-container .story-name .btn-delete-story {
+    top: 2px;
+    right: 3px;
+    font-weight: initial;
+}
+
+.board .board-column .header-horizontal {
+    text-align: right;
+    color: #B5B4B4;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.board .board-column .board-container {
+    min-height: 83px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 0px;
+    border-color: rgb(221, 221, 221);
+    border-style: solid;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.board .board-column .board-container .task {
+    border: 1px solid rgb(238, 239, 233);
+    border-radius: 3px;
+    background-color: #FBFBD5;
+    width: 120px;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.board .board-column .board-container .task .task-move {
+    background-color: blue;
+    height: 10px;
+    cursor: move;
+    background-color: rgba(158, 158, 158, 0.31);
+}
+
+.board .board-column .board-container .task .task-move .btn-delete-task,
+.board .board-column .board-container .task .task-move .btn-edit-task {
+    padding: 0;
+    font-size: 10px;
+    color: #9E9127;
+    border-style: none;
+    margin-top: -1px;
+    margin-right: 1px;
+}
+
+.board .board-column .board-container .task .task-content {
+    padding: 3px;
+}
+
+.board .board-column .board-container .task .task-content .task-description {
+    min-height: 50px;
+    font-size: 12px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.board .board-column .board-container .task .task-content .task-footer {
+    height: 8px;
+    font-size: 9px;
+    font-family: cursive;
+    color: rgba(134, 134, 4, 0.88);
+}
+
+.board .board-column .board-container .task .task-content .task-footer .task-assigned {
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 110px;
+}
+
+.board .board-column .board-container .task .task-content .task-footer .task-point {
+    float: right;
+}
+
+@media (min-width: 768px) {
+    .board .header-vertical {
+        display: table-header-group;
+    }
+    .board .board-column .board-container {
+        height: 100%;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        border-left-width: 1px;
+    }
+    .board .header-horizontal {
+        display: none;
+    }
+}
+
+.modal-share-board .modal-dialog #form-share-board > table {
+    margin-bottom: 0;
+}
+
+.modal-share-board .modal-dialog #form-share-board > table th {
+    padding: 15px 20px;
+}
+
+.modal-share-board .modal-dialog #form-share-board > table th .form-control {
+    width: 100%;
+}
+
+.modal-share-board .modal-dialog #form-share-board > table .th-bt {
+    width: 20px;
+    padding-left: 0;
+}
+
+.modal-share-board .modal-dialog #form-share-board > table .th-bt .btn {
+    height: 35px;
+}
+
+.modal-share-board .modal-dialog #form-share-board .modal-body {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 0px;
+    margin-top: -1px;
+}
+
+.modal-share-board .modal-dialog #form-share-board .modal-body > table {
+    margin-bottom: 0;
+}
+
+.modal-share-board .modal-dialog #form-share-board .modal-body > table .td-bt {
+    width: 20px;
+}
+
+.modal-share-board .modal-dialog #form-share-board .modal-footer {
+    margin-top: 0;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "EasyBoard2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brouercode/Easy-Board2.git"
+  },
+  "homepage": "https://github.com/brouercode/Easy-Board2",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "ejs": "0.8.5",
+    "express": "3.4.7",
+    "express-load": "1.1.8",
+    "mongoose": "3.8.4",
+    "socket.io": "0.9.16"
+  }
+}

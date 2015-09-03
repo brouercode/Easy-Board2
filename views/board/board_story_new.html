@@ -1,0 +1,51 @@
+<template name="board_story_new">
+    <div class="modal fade modal-add-story" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="type-modal-title">New</span> Story</h4>
+                </div>
+                <form id="form-add-story">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="storyName">Description</label>
+                            <input class="form-control" id="storyName" placeholder="Description">
+                        </div>
+                        <input type="hidden" id="storyId">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="closeModal" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-save-story">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.modal-add-story').on('show.bs.modal', function(event) {
+            var modal = $(this)
+
+            var inputStoryId = modal.find('#storyId')[0];
+            var inputStoryName = modal.find('#storyName')[0];
+            var spanTitle = modal.find('.type-modal-title');
+            var btnSave = modal.find('.btn-save-story');
+
+            if ($(event.relatedTarget).hasClass("btn-new-story")) {
+                inputStoryId.value = "";
+                inputStoryName.value = "";
+                spanTitle.text("New");
+                btnSave.text("Create");
+            }
+            else
+            if ($(event.relatedTarget).hasClass("btn-edit-story")) {
+                inputStoryId.value = event.relatedTarget.parentElement.dataset.storyId;
+                inputStoryName.value = event.relatedTarget.parentElement.dataset.storyName
+                spanTitle.text("Update");
+                btnSave.text("Save");
+            }
+            
+            modal.find('#storyName').focus();
+        });
+    </script>
+</template>

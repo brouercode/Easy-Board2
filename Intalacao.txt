@@ -1,0 +1,11 @@
+
+sudo npm install -g express-generator
+sudo ln -s /usr/local/lib/node_modules/express-generator/bin/express /usr/bin/express
+mkdir data
+echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
+chmod a+x mongod
+--rodar o mongo
+./mongod
+
+
+DEBUG=EasyBoard2 npm start

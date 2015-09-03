@@ -1,0 +1,9 @@
+.home-texto {
+    text-align: center;
+}
+
+.home-image {
+    padding-top: 60px;
+    text-align: center;
+    background: url('../images/mac_bg.png') no-repeat center center;
+}
