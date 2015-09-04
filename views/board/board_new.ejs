@@ -1,0 +1,32 @@
+<% include ../header %>
+    <header>
+        <link rel="stylesheet" href="/stylesheets/board.css">
+    </header>
+    <div class="board_new">
+        <div class="container">
+            <h3></h3>
+            <div class="well-white col-md-4">
+                <legend>
+                    New board
+                </legend>
+
+                <form action="/board/save" method="post" >
+                    <div class="form-group">
+                        <label for="nameBoard">Name</label>
+                        <input class="form-control" id="boardName" placeholder="Name" name="board[name]">
+                    </div>
+                    <div class="form-group">
+                        <label for="boardType">Type</label>
+                        <select class="form-control" id="boardType" name="board[type]">
+                            <option value="SCRUM">Scrum</option>
+                        </select>
+                    </div>
+                    <div class="controlbar">
+                        <button type="submit" class="btn btn-primary pull-right">Create</button>
+                        <a onclick="window.history.back()" class="btn btn-primary pull-right">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% include ../footer %>

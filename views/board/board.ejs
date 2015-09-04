@@ -1,0 +1,145 @@
+<% include ../header %>
+    <header>
+        <link rel="stylesheet" href="/stylesheets/board.css">
+        <script>
+            var deleteBoard = function(boardId) {
+                if (confirm("Are you sure you want to delete the board?")) {
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/board/" + boardId);
+                 
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "_method");
+                    hiddenField.setAttribute("value", "delete");
+                    form.appendChild(hiddenField);
+                    
+                    document.body.appendChild(form);
+                     form.submit();
+                }
+            };
+            var deleteStory = function(boardId, storyId) {
+                if (confirm("Are you sure you want to delete the story?")) {
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/board/" + boardId + "/story");
+                 
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "_method");
+                    hiddenField.setAttribute("value", "delete");
+                    form.appendChild(hiddenField);
+                    
+                    hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "story[_id]");
+                    hiddenField.setAttribute("value", storyId);
+                    form.appendChild(hiddenField);
+                    
+                    document.body.appendChild(form);
+                     form.submit();
+                }
+            };
+        </script>
+    </header>
+
+    <div class="board">
+        <legend class="view-title">
+            <div class="navbar">
+                <div class="navbar-collapse pull-left">
+                    <ul class="nav navbar-nav navbar-left" style="margin: 0;">
+                        <li id="dropdown-list" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" style="padding: 5px;">
+                                <span class="glyphicon glyphicon-align-justify" aria-hidden="true" style="font-size: 20px;"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                
+                                <li>
+                                    <span class="glyphicon glyphicon-plus icon-add-story"></span>
+                                    <a class="btn btn-new-story" data-toggle="modal" data-target=".modal-add-story">Add Story</a>
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-share icon-share <%= board.userId != userId?'disabled':'' %>"></span>
+                                    <a class="btn btn-share-board <%= board.userId != userId?'disabled':'' %>" data-toggle="modal" data-target=".modal-share-board">Share With...</a>
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-remove-circle icon-delete <%= board.userId != userId?'disabled':'' %>"></span>
+                                    <a class="btn btn-delete-board <%= board.userId != userId?'disabled':'' %>" onclick="deleteBoard('<%- board._id%>');return false;">Delete Board</a>    
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <span class="glyphicon glyphicon-off icon-close"></span>
+                                    <a href="/board/list" class="btn btn-close-board">Close Board</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <span class="title-board-name pull-left"><%- board.name %></span>
+            </div>
+        </legend>
+        <table class="table table-striped table-bordered board">
+            <thead class="header-vertical">
+                <tr>
+                    <th class="header-story">Story
+                        <a class="btn btn-new-story" data-toggle="modal" data-target=".modal-add-story">+ Add Story</a>
+                    </th>
+                    <th>To Do</th>
+                    <th>In Process</th>
+                    <th>To Verify</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% stories.forEach(function(story) { %>
+                <tr>
+                    <td class="story-column">
+                        <div class="story-container">
+                           <% include board_story %>
+                        </div>
+                    </td>
+                    <td class="board-column" colspan="4">
+                        <div class="header-horizontal">
+                            To Do
+                        </div>
+                        <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="TODO">
+        <!--                    {{#each getListTask _id "TODO"}} {{> board_task }} {{/each}}-->
+                        </div>
+                        <div class="header-horizontal">
+                            In Process
+                        </div>
+                        <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="PROCESS">
+        <!--                    {{#each getListTask _id "PROCESS"}} {{> board_task }} {{/each}}-->
+                        </div>
+                        <div class="header-horizontal">
+                            To Verify
+                        </div>
+                        <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="VERIFY">
+        <!--                    {{#each getListTask _id "VERIFY"}} {{> board_task }} {{/each}}-->
+                        </div>
+                        <div class="header-horizontal">
+                            Done
+                        </div>
+                        <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="DONE">
+        <!--                    {{#each getListTask _id "DONE"}} {{> board_task }} {{/each}}-->
+                        </div>
+                    </td>
+        <!--            <script>-->
+        <!--                $(function() {-->
+        <!--                    $(".story{{_id}}").sortable({-->
+        <!--                        connectWith: ".story{{_id}}",-->
+        <!--                        handle: ".task-move"-->
+        <!--                    });-->
+        <!--                });-->
+        <!--            </script>-->
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+    
+    <% include board_story_new %>
+    <% include board_share %>
+    <% include board_task_new %>
+<% include ../footer %>

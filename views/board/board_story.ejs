@@ -1,0 +1,5 @@
+<div class="story-name" data-story-id="<%- story._id %>" data-story-name="<%- story.name %>"><%- story.name %>
+    <a class="btn btn-new-task" data-toggle="modal" data-target=".modal-add-task">+ Add Task</a>
+    <a class="glyphicon glyphicon-pencil btn btn-edit-story" data-toggle="modal" data-target=".modal-add-story"></a>
+    <a class="glyphicon glyphicon-remove btn btn-delete-story" onclick="deleteStory('<%- board._id%>','<%- story._id %>');return false;"></a>
+</div>

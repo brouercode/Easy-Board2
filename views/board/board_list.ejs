@@ -6,7 +6,7 @@
         <div class="well-white">
             <legend>
                 Your boards
-                <a href="{{pathFor 'board_new'}}" class="btn btn-primary pull-right">New Bord</a>
+                <a href="/board/new" class="btn btn-primary pull-right">New Bord</a>
             </legend>
 
             <table class="table table-condensed">
@@ -18,13 +18,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each boards}}
+                      <% boards.forEach(function(board) { %>
+                    
                     <tr>
-                        <td><a href="{{pathFor 'board'}}">{{name}}</a></td>
-                        <td>{{{typeBoardLabel type}}}</td>
-                        <td>{{userName}}</td>
+                        <td><a href="/board/<%- board._id %>"><%- board.name %></a></td>
+                        <td>
+                            <%- board.type %>
+                        </td>
+                        <td><%- board.userName %></td>
                     </tr>
-                    {{/each}}
+                    <% }) %>
                 </tbody>
             </table>
         </div>

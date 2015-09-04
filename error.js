@@ -5,5 +5,6 @@ exports.notFound = function(req, res, next) {
 
 exports.serverError = function(error, req, res, next) {
     res.status(500);
-    res.send("<script>alert(\"" + error.message + "\");window.history.back();</script>");
+    var msg = error.message.replace(/"/g, '\'');
+    res.send("<script>alert(\"" + msg + "\");window.history.back();</script>");
 };

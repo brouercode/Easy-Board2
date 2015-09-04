@@ -1,5 +1,5 @@
 module.exports = function(app) {
-   var Usuario = app.models.usuario;
+   var UsuarioDB = app.models.usuario;
 
     var HomeController = {
         index: function(req, res) {
@@ -10,7 +10,7 @@ module.exports = function(app) {
                  email: req.body.usuario.email
             };
 
-             Usuario.findOne(query)
+             UsuarioDB.findOne(query)
                  .select('email password')
                  .exec(function(erro, usuario) {
 
@@ -23,7 +23,7 @@ module.exports = function(app) {
                      }
                  }
                  else {
-                     Usuario.create(req.body.usuario, function(erro, usuario) {
+                     UsuarioDB.create(req.body.usuario, function(erro, usuario) {
                          if (erro) {
                              res.redirect('/');
                          }

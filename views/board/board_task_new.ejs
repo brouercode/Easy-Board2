@@ -1,0 +1,60 @@
+    <div class="modal fade modal-add-task" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="type-modal-title">New</span> Task</h4>
+                </div>
+                <form id="form-add-task" action="/board/<%- board._id %>/task" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="storyName">Description</label>
+                            <input class="form-control" id="taskName" placeholder="Description" name="task[name]">
+                        </div>
+                        <div class="form-group">
+                            <label for="taskAssigned">Assigned To</label>
+                            <input class="form-control" id="taskAssigned" placeholder="Assigned To" name="task[assigned]">
+                        </div>
+                        <input type="hidden" id="storyId" name="task[storyId]">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="closeModal" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-save-task">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var inputTaskIdAdd = $('<input type="hidden" id="taskId" name="task[_id]">')[0];
+        $('.modal-add-task').on('show.bs.modal', function(event) {
+            var modal = $(this)
+            modal.find('#storyId')[0].value = event.relatedTarget.parentElement.dataset.storyId;
+
+            var formTask = modal.find('#form-add-task')[0];
+            var inputTaskName = modal.find('#taskName')[0];
+            var inputTaskAssigned = modal.find('#taskAssigned')[0];
+            var spanTitle = modal.find('.type-modal-title');
+            var btnSave = modal.find('.btn-save-task');
+
+            if ($(event.relatedTarget).hasClass("btn-new-task")) {
+                if(inputTaskIdAdd.parentNode == formTask)
+                    formTask.removeChild(inputTaskIdAdd);
+                inputTaskName.value = "";
+                inputTaskAssigned.value = "";
+                spanTitle.text("New");
+                btnSave.text("Create");
+            }
+            else
+            if ($(event.relatedTarget).hasClass("btn-edit-task")) {
+                inputTaskIdAdd.value = event.relatedTarget.parentElement.dataset.taskId;
+                formTask.appendChild(inputTaskIdAdd);
+                inputTaskName.value = event.relatedTarget.parentElement.dataset.taskName;
+                inputTaskAssigned.value = event.relatedTarget.parentElement.dataset.taskAssigned;
+                spanTitle.text("Update");
+                btnSave.text("Save");
+            }
+            
+            modal.find('#taskName').focus();
+        });
+    </script>

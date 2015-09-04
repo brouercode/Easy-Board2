@@ -6,7 +6,7 @@ var express = require('express'),
   //io = require('socket.io').listen(server),
   mongoose = require('mongoose');
 
-global.db = mongoose.connect('mongodb://localhost/ntalk');
+global.db = mongoose.connect('mongodb://localhost/easyboard');
 
 // const KEY = 'ntalk.sid',
 //   SECRET = 'ntalk';
@@ -35,7 +35,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(__dirname + '/public'));
 //app.use(error.notFound);
-app.use(error.serverError);
+//app.use(error.serverError);
 
 load('models')
   .then('controllers')
