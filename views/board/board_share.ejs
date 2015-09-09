@@ -5,31 +5,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Share With ...</h4>
             </div>
-            <form id="form-share-board">
+            <form id="form-share-board" action="/board/<%- board._id %>/share" method="post">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>
-                                <input class="form-control" id="taskName" placeholder="Description" >
+                                <input class="form-control" id="taskName" placeholder="Description" name="user[email]">
                             </th>
                             <th class="th-bt">
-                                <button type="button" id="btn-save-share" class="btn btn-primary glyphicon glyphicon-floppy-save" style="height: 35px;"></button>
+                                <button type="submit" id="btn-save-share" class="btn btn-primary glyphicon glyphicon-floppy-save" style="height: 35px;" ></button>
                             </th>
                         </tr>
                     </thead>
 
                 </table>
+
                 <div class="modal-body" >
                     <table class="table">
                         <tbody>
-                              {{#each boardSelected.listShare}}
-                            <tr>
-                                <td><span>{{email}}</span> </td>
-                                <td class="td-bt">
-                                   <button id="btn-unshare" type="button" class="btn btn-danger glyphicon glyphicon-remove-circle" data-user-id="{{_id}}"></button>
-                                </td>
-                            </tr>
-                             {{/each}}
+                            <% if(board.listShare) { %>
+                                <% board.listShare.forEach(function(user) { %>
+                                    <tr>
+                                        <td><span><%- user.email %></span> </td>
+                                        <td class="td-bt">
+                                            <button id="btn-unshare" type="button" class="btn btn-danger glyphicon glyphicon-remove-circle" onclick="unshareBoard('<%- board._id%>','<%- user._id %>');return false;"></button>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -41,9 +44,8 @@
     </div>
 </div>
 <script>
-    // $('.modal-add-task').on('show.bs.modal', function(event) {
-    //     var modal = $(this)
-    //     modal.find('#userEmail')[0].value = "";
-
-    // });
+     $('.modal-add-task').on('show.bs.modal', function(event) {
+         var modal = $(this)
+         modal.find('#userEmail')[0].value = "";
+     });
 </script>

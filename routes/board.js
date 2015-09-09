@@ -10,4 +10,6 @@ module.exports = function(app) {
     app.del('/board/:id/story', autenticar, board.destroyStory);
     app.post('/board/:id/task', autenticar, board.saveTask);
     app.del('/board/:id/task', autenticar, board.destroyTask);
+    app.post('/board/:id/share', autenticar, board.share);
+    app.del('/board/:id/unshare', autenticar, board.unshare);
 };

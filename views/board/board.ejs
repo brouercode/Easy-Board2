@@ -40,6 +40,53 @@
                      form.submit();
                 }
             };
+            
+            var deleteTask = function(boardId, taskId) {
+                if (confirm("Are you sure you want to delete the task?")) {
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/board/" + boardId + "/task");
+                 
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "_method");
+                    hiddenField.setAttribute("value", "delete");
+                    form.appendChild(hiddenField);
+                    
+                    hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "task[_id]");
+                    hiddenField.setAttribute("value", taskId);
+                    form.appendChild(hiddenField);
+                    
+                    document.body.appendChild(form);
+                     form.submit();
+                }
+            };
+            
+            var unshareBoard = function(boardId, userId) {
+                 if (confirm("Are you sure you want to remove the share?")) {
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/board/" + boardId + "/unshare");
+                 
+                    var hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "_method");
+                    hiddenField.setAttribute("value", "delete");
+                    form.appendChild(hiddenField);
+                    
+                    hiddenField = document.createElement("input");
+                    hiddenField.setAttribute("type", "hidden");
+                    hiddenField.setAttribute("name", "user[_id]");
+                    hiddenField.setAttribute("value", userId);
+                    form.appendChild(hiddenField);
+                    
+                    document.body.appendChild(form);
+                     form.submit();
+                }
+            };
+            
         </script>
     </header>
 
@@ -103,35 +150,51 @@
                             To Do
                         </div>
                         <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="TODO">
-        <!--                    {{#each getListTask _id "TODO"}} {{> board_task }} {{/each}}-->
+                            <% tasks.forEach(function(task) { %>
+                                <% if(task.state == "TODO") { %>
+                                    <% include board_task %>
+                                <% } %>
+                            <% }) %>
                         </div>
                         <div class="header-horizontal">
                             In Process
                         </div>
                         <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="PROCESS">
-        <!--                    {{#each getListTask _id "PROCESS"}} {{> board_task }} {{/each}}-->
-                        </div>
+                             <% tasks.forEach(function(task) { %>
+                                <% if(task.state == "PROCESS") { %>
+                                    <% include board_task %>
+                                <% } %>
+                            <% }) %>
+                                </div>
                         <div class="header-horizontal">
                             To Verify
                         </div>
                         <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="VERIFY">
-        <!--                    {{#each getListTask _id "VERIFY"}} {{> board_task }} {{/each}}-->
+                             <% tasks.forEach(function(task) { %>
+                                <% if(task.state == "VERIFY") { %>
+                                    <% include board_task %>
+                                <% } %>
+                            <% }) %>
                         </div>
                         <div class="header-horizontal">
                             Done
                         </div>
                         <div class="board-container story<%- story._id %> col-xs-12 col-sm-3" data-story-id="<%- story._id %>" data-state="DONE">
-        <!--                    {{#each getListTask _id "DONE"}} {{> board_task }} {{/each}}-->
+                             <% tasks.forEach(function(task) { %>
+                                <% if(task.state == "DONE") { %>
+                                    <% include board_task %>
+                                <% } %>
+                            <% }) %>
                         </div>
                     </td>
-        <!--            <script>-->
-        <!--                $(function() {-->
-        <!--                    $(".story{{_id}}").sortable({-->
-        <!--                        connectWith: ".story{{_id}}",-->
-        <!--                        handle: ".task-move"-->
-        <!--                    });-->
-        <!--                });-->
-        <!--            </script>-->
+                    <script>
+                        $(function() {
+                            $(".story<%- story._id %>").sortable({
+                                connectWith: ".story<%- story._id %>",
+                                handle: ".task-move"
+                            });
+                        });
+                    </script>
                 </tr>
                 <% }) %>
             </tbody>

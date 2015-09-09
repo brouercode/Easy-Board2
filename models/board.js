@@ -1,6 +1,11 @@
 module.exports = function(app) {
     var Schema = require('mongoose').Schema;
 
+    var userShare = Schema({
+        nome: String,
+        email: String
+    });
+    
     var board = Schema({
         name: {
             type: String,
@@ -17,7 +22,8 @@ module.exports = function(app) {
         userId: {
             type: String,
             required: true
-        }
+        },
+        listShare: [userShare]
     });
     return db.model('boards', board);
 };

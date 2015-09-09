@@ -1,0 +1,17 @@
+<div class="task">
+    <div class="task-move" data-story-id="<%-story._id%>" data-task-id="<%-task._id%>" data-task-name="<%-task.name%>" data-task-assigned="<%-task.assigned%>">
+        <a class="glyphicon glyphicon-remove btn btn-delete-task pull-right" onclick="deleteTask('<%- board._id%>','<%- task._id %>');return false;"></a>
+        <a class="glyphicon glyphicon-pencil btn btn-edit-task pull-right" data-toggle="modal" data-target=".modal-add-task"></a>
+    </div>
+
+    <div class="task-content">
+        <div class="task-description">
+            <span><%-task.name%></span>
+        </div>
+        <div class="task-footer">
+            <div class="task-assigned">
+                <%-task.assigned%>
+            </div>
+        </div>
+    </div>
+</div>

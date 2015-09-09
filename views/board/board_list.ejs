@@ -23,7 +23,7 @@
                     <tr>
                         <td><a href="/board/<%- board._id %>"><%- board.name %></a></td>
                         <td>
-                            <%- board.type %>
+                            <%- board.type == "SCRUM"?"Scrum":"" %>
                         </td>
                         <td><%- board.userName %></td>
                     </tr>
